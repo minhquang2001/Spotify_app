@@ -1,6 +1,13 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { useState } from 'react'
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParams } from '../../navigators/RootNavigator';
+
+
+
 const Footer = () => {
+    const navigation = useNavigation<StackNavigationProp<RootStackParams>>()
     const [active, setActive] = useState(false)
     const handleOnPress = () => {
         setActive(!active)
@@ -10,23 +17,27 @@ const Footer = () => {
             <View style={styles.marginHorizontal}>
                 <View style={styles.wrapIcon}>
 
-                    <TouchableOpacity style={styles.wrapContent} >
+                    <TouchableOpacity style={styles.wrapContent} onPress={() => navigation.navigate('Home')}>
                         <Image source={require('../../../assets/images/icon/activeIcon.png')} style={[styles.spaceDot, styles.dotNoActive, styles.dotActive]} />
                         <Image source={require('../../../assets/images/icon/home.png')} style={[styles.colorImgNoActive, styles.colorImgActive]} />
-                        <Text style={[styles.colorTextNoActive, styles.textStyle,styles.colorTextActive]}>Home</Text>
+                        <Text style={[styles.colorTextNoActive, styles.textStyle, styles.colorTextActive]}>Home</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.wrapContent}>
+
+                    <TouchableOpacity style={styles.wrapContent} onPress={() => navigation.navigate('Playlists')}>
                         <Image source={require('../../../assets/images/icon/activeIcon.png')} style={[styles.spaceDot, styles.dotNoActive]} />
                         <Image source={require('../../../assets/images/icon/music-filter.png')} style={styles.colorImgNoActive} />
                         <Text style={[styles.colorTextNoActive, styles.textStyle]}>Playlist</Text>
                     </TouchableOpacity>
+
                     <Image source={require('../../../assets/images/icon/home.png')} style={{ opacity: 0 }} />
-                    <TouchableOpacity style={styles.wrapContent}>
+
+                    <TouchableOpacity style={styles.wrapContent} onPress={() => navigation.navigate('History')}>
                         <Image source={require('../../../assets/images/icon/activeIcon.png')} style={[styles.spaceDot, styles.dotNoActive]} />
                         <Image source={require('../../../assets/images/icon/history.png')} style={styles.colorImgNoActive} />
                         <Text style={[styles.colorTextNoActive, styles.textStyle]}>History</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.wrapContent}>
+
+                    <TouchableOpacity style={styles.wrapContent} onPress={() => navigation.navigate('Profil')}>
                         <Image source={require('../../../assets/images/icon/activeIcon.png')} style={[styles.spaceDot, styles.dotNoActive]} />
                         <Image source={require('../../../assets/images/icon/profile.png')} style={styles.colorImgNoActive} />
                         <Text style={[styles.colorTextNoActive, styles.textStyle]}>Profil</Text>
@@ -57,7 +68,7 @@ const styles = StyleSheet.create({
     },
     marginHorizontal: {
         height: 73,
-        marginHorizontal: 25
+        marginHorizontal: 32
     },
     wrapIcon: {
         flexDirection: 'row',

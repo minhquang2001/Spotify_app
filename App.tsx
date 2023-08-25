@@ -25,8 +25,10 @@ function App(): JSX.Element {
   // };
 
   return (
+
     <SafeAreaProvider style={{ flex: 1 }}>
       <StatusBar barStyle="light-content" />
+
       <RootNavigator />
     </SafeAreaProvider>
   );

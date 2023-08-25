@@ -1,11 +1,51 @@
 import { Text, StyleSheet, View, Image } from 'react-native'
 
-const Header = () => {
+const Header = (Navbar: any) => {
+    const { Nav } = Navbar
     return (
         <View style={styles.container}>
-            <Image source={require('../../../assets/images/icon/search.png')} />
-            <Image source={require('../../../assets/images/logo/Spotify_Logo.png')} />
-            <Image source={require('../../../assets/images/icon/setting.png')} />
+
+            {/* Render header when tab Home */}
+
+            {Nav === "Home"
+                && (
+                    <>
+                        <Image source={require('../../../assets/images/icon/search.png')} />
+                        <Image source={require('../../../assets/images/logo/Spotify_Logo.png')} />
+                        <Image source={require('../../../assets/images/icon/setting.png')} />
+                    </>
+                )}
+
+            {/* Render header when tab Playlist */}
+
+            {Nav === "Playlist" && (
+                <>
+                    <Image source={require('../../../assets/images/icon/search.png')} />
+                    <Text style={styles.heading}>Playlists</Text>
+                    <Image source={require('../../../assets/images/icon/add.png')} />
+                </>
+            )}
+
+            {/* Render header when tab History */}
+
+            {Nav === "" && (
+                <>
+                    <Image source={require('../../../assets/images/icon/search.png')} />
+                    <Text style={styles.heading}>History</Text>
+                    <Image source={require('../../../assets/images/icon/setting.png')} />
+                </>
+            )}
+
+            {/* Render header when tab Profil */}
+
+            {Nav === "" && (
+                <>
+                    <Image source={require('../../../assets/images/icon/search.png')} />
+                    <Text style={styles.heading}>Profil</Text>
+                    <Image source={require('../../../assets/images/icon/setting.png')} />
+                </>
+            )}
+
         </View>
     )
 }
@@ -17,7 +57,12 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         height: 60,
-        marginHorizontal: 25
+        marginHorizontal: 32
+    },
+    heading: {
+        color: '#fff',
+        fontSize: 24,
+        fontWeight: 'bold'
     }
 })
 

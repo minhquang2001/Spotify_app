@@ -4,6 +4,7 @@ import ListType from '../components/ListType/ListType';
 import Footer from '../components/Footer/Footer';
 import Separate from '../components/Separate/Separate';
 import WrapArtists from '../components/WrapArtists/WrapArtists';
+import WrapAlbumsLayout from '../components/WrapAlbumsLayout/WrapAlbumsLayout';
 
 const HomeScreen = () => {
   const isDarkMode = useColorScheme() === 'light';
@@ -14,57 +15,35 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.backGroundColor}>
-      <Header />
+      <Header Nav="Home" />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={styles.marginLayout}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.container}>
-          <View
-            style={
-              styles.backGroundColor
-            }>
-            <Image style={styles.banner} source={require("../../assets/images/banner/banner1.png")} />
-            <View style={styles.contentToday}>
-              <Text style={[styles.colorText, styles.headerText]} >Today's hit</Text>
-              <ScrollView style={styles.wrapAlbum} horizontal={true} showsHorizontalScrollIndicator={false}>
-                <View style={styles.wrapContentAlbum}>
-                  <View style={styles.wrapImage}>
-                    <Image source={require('../../assets/images/banner/Album1.png')} style={styles.imageAlbum} />
-                    <Image source={require('../../assets/images/icon/playAlbum.png')} style={styles.playAlbum} />
-                  </View>
-                  <Text style={[styles.headerAlbum, styles.colorText]}>ArTi Untuk Cinta</Text>
-                  <Text style={[styles.authorAlbum, styles.colorText]}>Arsy Widianto, Tiar...</Text>
-                </View>
-                <View style={styles.wrapContentAlbum}>
-                  <View style={styles.wrapImage}>
-                    <Image source={require('../../assets/images/banner/Album1.png')} style={styles.imageAlbum} />
-                    <Image source={require('../../assets/images/icon/playAlbum.png')} style={styles.playAlbum} />
-                  </View>
-                  <Text style={[styles.headerAlbum, styles.colorText]}>ArTi Untuk Cinta</Text>
-                  <Text style={[styles.authorAlbum, styles.colorText]}>Arsy Widianto, Tiar...</Text>
-                </View>
-                <View style={styles.wrapContentAlbum}>
-                  <View style={styles.wrapImage}>
-                    <Image source={require('../../assets/images/banner/Album1.png')} style={styles.imageAlbum} />
-                    <Image source={require('../../assets/images/icon/playAlbum.png')} style={styles.playAlbum} />
-                  </View>
-                  <Text style={[styles.headerAlbum, styles.colorText]}>ArTi Untuk Cinta</Text>
-                  <Text style={[styles.authorAlbum, styles.colorText,]}>Arsy Widianto, Tiar...</Text>
-                </View>
-              </ScrollView>
-            </View>
-          </View>
 
+        {/* Banner */}
+        <View style={styles.container}>
+
+          <Image style={styles.banner} source={require("../../assets/images/banner/banner1.png")} />
 
         </View>
 
+        <WrapAlbumsLayout />
 
+        {/* Header list type */}
         <ListType />
+
+        {/* Box shadow separate */}
         <Separate />
+
+        {/* Wrap Artists Column */}
         <WrapArtists />
+
+
       </ScrollView>
+
+      {/* Footer */}
       <Footer />
 
     </SafeAreaView>
