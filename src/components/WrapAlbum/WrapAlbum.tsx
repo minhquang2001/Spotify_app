@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         marginBottom: 8
     },
     imageAlbum: {
-        borderRadius: 10
+        borderRadius: 12
     },
     playAlbum: {
         position: 'absolute',

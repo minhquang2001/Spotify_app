@@ -8,39 +8,64 @@ import { RootStackParams } from '../../navigators/RootNavigator';
 
 const Footer = () => {
     const navigation = useNavigation<StackNavigationProp<RootStackParams>>()
-    const [active, setActive] = useState(false)
-    const handleOnPress = () => {
-        setActive(!active)
+    const [activeTab, setActiveTab] = useState("Home")
+    const handleTabPress = (nameTab: any) => {
+        setActiveTab(nameTab)
+        navigation.navigate(nameTab)
     }
     return (
         <View style={styles.bottom} >
             <View style={styles.marginHorizontal}>
                 <View style={styles.wrapIcon}>
 
-                    <TouchableOpacity style={styles.wrapContent} onPress={() => navigation.navigate('Home')}>
-                        <Image source={require('../../../assets/images/icon/activeIcon.png')} style={[styles.spaceDot, styles.dotNoActive, styles.dotActive]} />
-                        <Image source={require('../../../assets/images/icon/home.png')} style={[styles.colorImgNoActive, styles.colorImgActive]} />
-                        <Text style={[styles.colorTextNoActive, styles.textStyle, styles.colorTextActive]}>Home</Text>
+                    <TouchableOpacity style={styles.wrapContent} onPress={() => handleTabPress('Home')}>
+                        <Image source={require('../../../assets/images/icon/activeIcon.png')}
+                            style={[styles.spaceDot, activeTab === "Home"
+                                ? styles.dotActive
+                                : styles.dotNoActive]} />
+                        <Image source={require('../../../assets/images/icon/home.png')}
+                            style={activeTab === "Home"
+                                ? styles.colorImgActive
+                                : styles.colorImgNoActive} />
+                        <Text style={[styles.textStyle, activeTab === "Home" ? styles.colorTextActive : styles.colorTextNoActive]}>Home</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.wrapContent} onPress={() => navigation.navigate('Playlists')}>
-                        <Image source={require('../../../assets/images/icon/activeIcon.png')} style={[styles.spaceDot, styles.dotNoActive]} />
-                        <Image source={require('../../../assets/images/icon/music-filter.png')} style={styles.colorImgNoActive} />
-                        <Text style={[styles.colorTextNoActive, styles.textStyle]}>Playlist</Text>
+                    <TouchableOpacity style={styles.wrapContent} onPress={() => handleTabPress('Playlists')}>
+                        <Image source={require('../../../assets/images/icon/activeIcon.png')}
+                            style={[styles.spaceDot, activeTab === "Playlists"
+                                ? styles.dotActive
+                                : styles.dotNoActive]} />
+                        <Image source={require('../../../assets/images/icon/music-filter.png')}
+                            style={activeTab === "Playlists"
+                                ? styles.colorImgActive
+                                : styles.colorImgNoActive} />
+                        <Text style={[styles.textStyle, activeTab === "Playlists" ? styles.colorTextActive : styles.colorTextNoActive]}>Playlist</Text>
                     </TouchableOpacity>
 
                     <Image source={require('../../../assets/images/icon/home.png')} style={{ opacity: 0 }} />
 
-                    <TouchableOpacity style={styles.wrapContent} onPress={() => navigation.navigate('History')}>
-                        <Image source={require('../../../assets/images/icon/activeIcon.png')} style={[styles.spaceDot, styles.dotNoActive]} />
-                        <Image source={require('../../../assets/images/icon/history.png')} style={styles.colorImgNoActive} />
-                        <Text style={[styles.colorTextNoActive, styles.textStyle]}>History</Text>
+                    <TouchableOpacity style={styles.wrapContent} onPress={() => handleTabPress('History')}>
+                        <Image source={require('../../../assets/images/icon/activeIcon.png')}
+                            style={[styles.spaceDot, activeTab === "History"
+                                ? styles.dotActive
+                                : styles.dotNoActive]} />
+                        <Image source={require('../../../assets/images/icon/history.png')}
+                            style={activeTab === "History"
+                                ? styles.colorImgActive
+                                : styles.colorImgNoActive} />
+                        <Text style={[styles.textStyle, activeTab === "History" ? styles.colorTextActive : styles.colorTextNoActive]}>History</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.wrapContent} onPress={() => navigation.navigate('Profil')}>
-                        <Image source={require('../../../assets/images/icon/activeIcon.png')} style={[styles.spaceDot, styles.dotNoActive]} />
-                        <Image source={require('../../../assets/images/icon/profile.png')} style={styles.colorImgNoActive} />
-                        <Text style={[styles.colorTextNoActive, styles.textStyle]}>Profil</Text>
+                    <TouchableOpacity style={styles.wrapContent} onPress={() => handleTabPress('Profil')}>
+                        <Image source={require('../../../assets/images/icon/activeIcon.png')}
+                            style={[styles.spaceDot, activeTab === "Profil"
+                                ? styles.dotActive
+                                : styles.dotNoActive]} />
+                        <Image source={require('../../../assets/images/icon/profile.png')}
+                            style={activeTab === "Profil"
+                                ? styles.colorImgActive
+                                : styles.colorImgNoActive} />
+                        <Text style={[styles.textStyle, activeTab === "Profil" ? styles.colorTextActive : styles.colorTextNoActive]}>Profil</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -82,7 +107,7 @@ const styles = StyleSheet.create({
 
     },
     textStyle: {
-        marginTop: 4
+        marginTop: 4,
     },
     spaceDot: {
         marginBottom: 12

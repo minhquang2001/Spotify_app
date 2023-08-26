@@ -32,7 +32,7 @@ const Header = (Navbar: any) => {
                 <>
                     <Image source={require('../../../assets/images/icon/search.png')} style={{ opacity: 0 }} />
                     <Text style={styles.heading}>History</Text>
-                    <Image source={require('../../../assets/images/icon/more.png')} />
+                    <Image source={require('../../../assets/images/icon/moreX.png')} />
                 </>
             )}
 
