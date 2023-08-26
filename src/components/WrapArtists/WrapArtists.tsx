@@ -43,7 +43,7 @@ const WrapArtists = () => {
 
 const styles = StyleSheet.create({
     container: {
-        marginHorizontal: 25,
+        marginHorizontal: 32,
         marginTop: 4
     },
     wrapBox: {

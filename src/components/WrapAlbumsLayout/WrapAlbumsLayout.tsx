@@ -44,7 +44,7 @@ const WrapAlbumLayout = () => {
 const styles = StyleSheet.create({
     contentToday: {
         marginTop: 30,
-        marginLeft: 25
+        marginLeft: 32
     },
     headerText: {
         fontSize: 24,

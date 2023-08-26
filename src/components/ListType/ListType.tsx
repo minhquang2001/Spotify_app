@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     wrapView: {
         flexDirection: 'row',
         marginTop: 32,
-        marginLeft: 25
+        marginLeft: 32
     },
     text: {
         color: '#fff',

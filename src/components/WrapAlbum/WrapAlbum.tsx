@@ -11,8 +11,8 @@ const WrapAlbum = ({ data }: any) => {
                         <Image source={album.pathImg} style={[styles.imageAlbum, albumStyles[album.type]]} />
                         {album.playIcon && <Image source={require('../../../assets/images/icon/playAlbum.png')} style={styles.playAlbum} />}
                     </View>
-                    <Text style={[styles.headerAlbum, styles.colorText]}>{album.title}</Text>
-                    <Text style={[styles.authorAlbum, styles.colorText]}>{album.desc}</Text>
+                    <Text style={[album.type === "large" ? styles.headerLarge : styles.headerMedium, styles.colorText]}>{album.title}</Text>
+                    <Text style={[album.type === "large" ? styles.subTextLarge : styles.subTextMedium, styles.colorText]}>{album.desc}</Text>
                 </View>
             ))}
         </>
@@ -31,18 +31,7 @@ const albumStyles: any = {
     // Add more styles for other types if needed
 };
 const styles = StyleSheet.create({
-    contentToday: {
-        marginTop: 30,
-        marginLeft: 25
-    },
-    headerText: {
-        fontSize: 24,
-        fontWeight: '700'
-    },
-    wrapAlbum: {
-        marginTop: 12,
-        flexDirection: 'row',
-    },
+
     wrapContentAlbum: {
         marginRight: 16
     },
@@ -60,12 +49,24 @@ const styles = StyleSheet.create({
         right: 8,
         bottom: 8
     },
-    headerAlbum: {
+
+
+
+    headerLarge: {
+        fontSize: 16,
+        fontWeight: '600',
+        lineHeight: 24
+    },
+    headerMedium: {
         fontSize: 14,
-        fontWeight: '500',
+        fontWeight: '600',
         lineHeight: 20
     },
-    authorAlbum: {
+    subTextLarge: {
+        fontSize: 14,
+        lineHeight: 20
+    },
+    subTextMedium: {
         fontSize: 12,
         lineHeight: 20
     },

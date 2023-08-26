@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import WrapPlaylists from '../components/Playlists/WrapPlaylists/WrapPlaylists';
+import Separate from '../components/Separate/Separate';
 
 function Playlists() {
     return (
@@ -13,6 +14,8 @@ function Playlists() {
                 contentInsetAdjustmentBehavior="automatic"
                 showsVerticalScrollIndicator={false}
             >
+                <Separate />
+
                 <WrapPlaylists />
 
 

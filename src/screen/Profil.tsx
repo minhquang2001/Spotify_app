@@ -7,7 +7,7 @@ import Footer from '../components/Footer/Footer';
 function Profil() {
     return (
         <SafeAreaView style={styles.backGroundColor}>
-            <Header />
+            <Header Nav="Profil" />
             <ScrollView
                 contentInsetAdjustmentBehavior="automatic"
                 showsVerticalScrollIndicator={false}

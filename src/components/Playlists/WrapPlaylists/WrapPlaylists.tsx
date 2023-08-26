@@ -16,7 +16,7 @@ const WrapPlaylists = () => {
             id: 2,
             title: "Runtuh",
             desc: "Feby Putri, Fiersa B...",
-            pathImg: require('../../../../assets/images/playlists/Playlist1.jpg'),
+            pathImg: require('../../../../assets/images/playlists/Playlist2.jpg'),
             playIcon: false,
             type: "large",
 
@@ -25,7 +25,7 @@ const WrapPlaylists = () => {
             id: 3,
             title: "Blue Jeans",
             desc: "GANGGA",
-            pathImg: require('../../../../assets/images/playlists/Playlist1.jpg'),
+            pathImg: require('../../../../assets/images/playlists/Playlist3.jpg'),
             playIcon: false,
             type: "large",
 
@@ -34,7 +34,7 @@ const WrapPlaylists = () => {
             id: 4,
             title: "ArTi Untuk Cinta",
             desc: "Arsy Widianto, Tiar...",
-            pathImg: require('../../../../assets/images/playlists/Playlist1.jpg'),
+            pathImg: require('../../../../assets/images/playlists/Playlist4.jpg'),
             playIcon: false,
             type: "large",
         },
@@ -42,7 +42,7 @@ const WrapPlaylists = () => {
             id: 5,
             title: "Runtuh",
             desc: "Feby Putri, Fiersa B...",
-            pathImg: require('../../../../assets/images/playlists/Playlist1.jpg'),
+            pathImg: require('../../../../assets/images/playlists/Playlist5.jpg'),
             playIcon: false,
             type: "large",
 
@@ -51,14 +51,14 @@ const WrapPlaylists = () => {
             id: 6,
             title: "Blue Jeans",
             desc: "GANGGA",
-            pathImg: require('../../../../assets/images/playlists/Playlist1.jpg'),
+            pathImg: require('../../../../assets/images/playlists/Playlist6.jpg'),
             playIcon: false,
             type: "large",
 
         }
     ]
     return (
-        <View style={styles.contentToday}>
+        <View style={styles.content}>
             <ScrollView horizontal={false} showsHorizontalScrollIndicator={false}>
                 <View style={styles.wrapAlbum}>
                     <WrapAlbum data={todayHits} />
@@ -69,47 +69,15 @@ const WrapPlaylists = () => {
 }
 
 const styles = StyleSheet.create({
-    contentToday: {
+    content: {
         marginTop: 30,
         marginHorizontal: 32
-    },
-    headerText: {
-        fontSize: 24,
-        fontWeight: '700'
     },
     wrapAlbum: {
         marginTop: 12,
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'space-between'
-    },
-    wrapContentAlbum: {
-        marginRight: 16
-    },
-    wrapImage: {
-        marginBottom: 8
-    },
-    imageAlbum: {
-        height: 128,
-        width: 128,
-        borderRadius: 10
-    },
-    playAlbum: {
-        position: 'absolute',
-        right: 8,
-        bottom: 8
-    },
-    headerAlbum: {
-        fontSize: 14,
-        fontWeight: '500',
-        lineHeight: 20
-    },
-    authorAlbum: {
-        fontSize: 12,
-        lineHeight: 20
-    },
-    colorText: {
-        color: '#fff'
     },
 })
 

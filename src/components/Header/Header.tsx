@@ -28,17 +28,17 @@ const Header = (Navbar: any) => {
 
             {/* Render header when tab History */}
 
-            {Nav === "" && (
+            {Nav === "History" && (
                 <>
-                    <Image source={require('../../../assets/images/icon/search.png')} />
+                    <Image source={require('../../../assets/images/icon/search.png')} style={{ opacity: 0 }} />
                     <Text style={styles.heading}>History</Text>
-                    <Image source={require('../../../assets/images/icon/setting.png')} />
+                    <Image source={require('../../../assets/images/icon/more.png')} />
                 </>
             )}
 
             {/* Render header when tab Profil */}
 
-            {Nav === "" && (
+            {Nav === "Profil" && (
                 <>
                     <Image source={require('../../../assets/images/icon/search.png')} />
                     <Text style={styles.heading}>Profil</Text>

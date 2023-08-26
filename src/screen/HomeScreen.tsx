@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     // marginTop: 20
   },
   container: {
-    marginHorizontal: 25,
+    marginHorizontal: 32,
 
   },
   banner: {

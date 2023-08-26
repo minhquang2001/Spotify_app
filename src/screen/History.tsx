@@ -3,15 +3,19 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+import Separate from '../components/Separate/Separate';
+import HistoryPlays from '../components/HistoryPlays/HistoryPlays';
 
 function History() {
     return (
         <SafeAreaView style={styles.backGroundColor}>
-            <Header />
+            <Header Nav="History" />
             <ScrollView
                 contentInsetAdjustmentBehavior="automatic"
                 showsVerticalScrollIndicator={false}
             >
+                <Separate />
+                <HistoryPlays />
 
 
 
