@@ -1,8 +1,18 @@
 import { center } from '@shopify/react-native-skia'
-import { Text, StyleSheet, View, Image, SafeAreaView } from 'react-native'
+import { useRef } from 'react';
+import { Text, StyleSheet, View, Image, SafeAreaView, Animated } from 'react-native'
 
 const Header = (Navbar: any) => {
+    const animatedValue = useRef(new Animated.Value(0)).current;
+
     const { Nav } = Navbar
+    const featureIconAnimation = {
+        opacity: animatedValue.interpolate({
+            inputRange: [0, 50],
+            outputRange: [1, 0],
+            extrapolate: 'clamp',
+        }),
+    };
     return (
         <>
 
@@ -39,16 +49,19 @@ const Header = (Navbar: any) => {
 
             {/* Render header when tab Profil */}
 
-            {Nav === "Profil" && (
-                <View style={styles.containerProfil}>
-                    <SafeAreaView>
+            {Nav === "Profile" && (
+                <View >
+                    {/* <SafeAreaView>
+                        <View style={styles.upperHeader} />
+                    </SafeAreaView>
+                    <SafeAreaView style={styles.containerProfil}>
                         <View style={styles.container}>
                             <Image source={require('../../../assets/images/icon/search.png')} style={{ opacity: 0 }} />
                             <Text style={styles.heading}>Profil</Text>
                             <Image source={require('../../../assets/images/icon/moreX.png')} />
                         </View>
-                        <View style={styles.wrapInfo}>
-                            <Image source={require('../../../assets/images/avatar/avatar.jpg')} style={styles.avatar} />
+                        <View style={[styles.wrapInfo]}>
+                            <Animated.Image source={require('../../../assets/images/avatar/avatar.jpg')} style={[styles.avatar, featureIconAnimation]} />
                             <Text style={styles.infoHeading}>Pham Minh Quang</Text>
                             <Text style={styles.infoEmail}>Email@gmail.com</Text>
                             <View style={styles.infoSocial}>
@@ -63,7 +76,7 @@ const Header = (Navbar: any) => {
                             </View>
                         </View>
 
-                    </SafeAreaView>
+                    </SafeAreaView> */}
                 </View>
             )}
 
@@ -72,6 +85,9 @@ const Header = (Navbar: any) => {
 }
 
 const styles = StyleSheet.create({
+    upperHeader: {
+        height: 60,
+    },
     container: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -80,12 +96,13 @@ const styles = StyleSheet.create({
         marginHorizontal: 32
     },
     containerProfil: {
+        position: 'absolute',
+        width: '100%',
         backgroundColor: '#333',
         height: 418,
         borderEndEndRadius: 64,
-        borderEndStartRadius: 64
+        borderEndStartRadius: 64,
     },
-
     heading: {
         color: '#fff',
         fontSize: 24,
