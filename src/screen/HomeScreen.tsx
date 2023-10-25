@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   marginLayout: {
-    // marginTop: 20
+    marginBottom: 73
   },
   container: {
     marginHorizontal: 32,

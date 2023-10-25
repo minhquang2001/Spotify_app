@@ -12,6 +12,7 @@ function Playlists() {
             <Header Nav="Playlist" />
             <ScrollView
                 contentInsetAdjustmentBehavior="automatic"
+                style={styles.marginLayout}
                 showsVerticalScrollIndicator={false}
             >
                 <Separate />
@@ -32,6 +33,9 @@ const styles = StyleSheet.create({
     backGroundColor: {
         backgroundColor: '#0f0e0e',
         flex: 1,
+    },
+    marginLayout: {
+        marginBottom: 73
     },
 })
 export default Playlists

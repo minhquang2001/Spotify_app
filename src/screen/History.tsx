@@ -13,6 +13,7 @@ function History() {
             <ScrollView
                 contentInsetAdjustmentBehavior="automatic"
                 showsVerticalScrollIndicator={false}
+                style={styles.marginLayout}
             >
                 <Separate />
                 <HistoryPlays />
@@ -32,6 +33,9 @@ const styles = StyleSheet.create({
     backGroundColor: {
         backgroundColor: '#0f0e0e',
         flex: 1,
+    },
+    marginLayout: {
+        marginBottom: 73
     },
 })
 export default History

@@ -87,7 +87,8 @@ function HistoryPlays() {
 const styles = StyleSheet.create({
     wrapScreen: {
         marginHorizontal: 32,
-        marginTop: 30
+        marginTop: 30,
+        marginBottom: 20
     },
     wrapContent: {
         marginBottom: 36
