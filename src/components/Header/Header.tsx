@@ -77,6 +77,7 @@ const Header = (Navbar: any) => {
                         </View>
 
                     </SafeAreaView> */}
+        
                 </View>
             )}
 

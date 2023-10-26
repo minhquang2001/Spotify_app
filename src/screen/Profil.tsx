@@ -3,49 +3,49 @@ import { View, Text, StyleSheet, ScrollView, Animated, Image } from 'react-nativ
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+import { translate } from '@shopify/react-native-skia';
 
 function Profil() {
+
+    // làm lại như các header khác, kèm hiệu ứng làm mờ text
+    
     const animatedValue = useRef(new Animated.Value(0)).current;
     const featureIconAnimation = {
         transform: [
+
             {
-              scaleX: animatedValue.interpolate({
-                inputRange: [0, 50],
-                outputRange: [1, 0],
-                extrapolate: 'clamp',
-              }),
+                translateY: animatedValue.interpolate({
+                    inputRange: [0, 200],
+                    outputRange: [0, -100],
+                    extrapolate: 'clamp',
+                }),
             },
-            {
-              translateX: animatedValue.interpolate({
-                inputRange: [0, 25],
-                outputRange: [0, -100],
-                extrapolate: 'clamp',
-              }),
-            },
-          ],
-          opacity: animatedValue.interpolate({
-            inputRange: [0, 25],
+        ],
+        opacity: animatedValue.interpolate({
+            inputRange: [0, 200],
             outputRange: [1, 0],
             extrapolate: 'clamp',
-          }),
+        }),
     };
     return (
         <View style={styles.backGroundColor}>
             <Header Nav="Profile" />
+
             <SafeAreaView>
+
                 <View style={styles.upperHeader} />
             </SafeAreaView>
-            <SafeAreaView style={styles.containerProfil}>
+            <SafeAreaView style={[styles.containerProfil, { transform: [{ translateY: 0 }] }]}>
                 <View style={styles.container}>
                     <Image source={require('../../assets/images/icon/search.png')} style={{ opacity: 0 }} />
                     <Text style={styles.heading}>Profil</Text>
                     <Image source={require('../../assets/images/icon/moreX.png')} />
                 </View>
-                <Animated.View style={[styles.wrapInfo, featureIconAnimation]}>
+                <Animated.View style={[styles.wrapInfo, featureIconAnimation, { transform: [{ translateY: 0 }] }]}>
                     <Animated.Image source={require('../../assets/images/avatar/avatar.jpg')} style={[styles.avatar, featureIconAnimation]} />
-                    <Text style={styles.infoHeading}>Pham Minh Quang</Text>
-                    <Text style={styles.infoEmail}>Email@gmail.com</Text>
-                    <View style={styles.infoSocial}>
+                    <Animated.Text style={[styles.infoHeading, featureIconAnimation]}>Pham Minh Quang</Animated.Text>
+                    <Animated.Text style={[styles.infoEmail, featureIconAnimation]}>Email@gmail.com</Animated.Text>
+                    <Animated.View style={[styles.infoSocial, featureIconAnimation]}>
                         <View style={styles.infoSocialWrap}>
                             <Text style={styles.infoSocialHeading}>Followers</Text>
                             <Text style={styles.infoSocialContent}>129</Text>
@@ -54,7 +54,7 @@ function Profil() {
                             <Text style={styles.infoSocialHeading}>Following</Text>
                             <Text style={styles.infoSocialContent}>1299</Text>
                         </View>
-                    </View>
+                    </Animated.View>
                 </Animated.View>
             </SafeAreaView>
             <ScrollView
@@ -82,14 +82,17 @@ function Profil() {
 
 const styles = StyleSheet.create({
     upperHeader: {
-        height: 40,
+        height: 30,
     },
     container: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         height: 60,
-        marginHorizontal: 32,
+        paddingHorizontal: 32,
+        zIndex: 99,
+        backgroundColor: '#333',
+
     },
     containerProfil: {
         position: 'absolute',
