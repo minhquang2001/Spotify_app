@@ -3,80 +3,109 @@ import { View, Text, StyleSheet, ScrollView, Animated, Image } from 'react-nativ
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
-import { translate } from '@shopify/react-native-skia';
 
 function Profil() {
+    const scrollViewRef = useRef<ScrollView>(null);
+    const lastOffsetY = useRef(0);
+    const scrollDirection = useRef('');
 
     // làm lại như các header khác, kèm hiệu ứng làm mờ text
-    
+
     const animatedValue = useRef(new Animated.Value(0)).current;
     const featureIconAnimation = {
-        transform: [
+        // transform: [
 
-            {
-                translateY: animatedValue.interpolate({
-                    inputRange: [0, 200],
-                    outputRange: [0, -100],
-                    extrapolate: 'clamp',
-                }),
-            },
-        ],
+        //     {
+        //         translateY: animatedValue.interpolate({
+        //             inputRange: [0, 200],
+        //             outputRange: [0, -100],
+        //             extrapolate: 'clamp',
+        //         }),
+        //     },
+        // ],
         opacity: animatedValue.interpolate({
             inputRange: [0, 200],
             outputRange: [1, 0],
             extrapolate: 'clamp',
         }),
     };
+    const featureWrapAnimation = {
+        // transform: [
+        //     {
+        //       translateY: animatedValue.interpolate({
+        //         inputRange: [0, 100],
+        //         outputRange: [0, -100],
+        //         extrapolate: 'clamp',
+        //       }),
+        //     },
+        //   ],
+        opacity: animatedValue.interpolate({
+            inputRange: [0, 400],
+            outputRange: [1, 0],
+            extrapolate: 'clamp',
+        }),
+
+    }
+    const backGroundColorHeader = {
+        backgroundColor: animatedValue.interpolate({
+            inputRange: [0, 400],
+            outputRange: ["#333", "#0f0e0e"],
+            extrapolate: 'clamp',
+        })
+    }
     return (
-        <View style={styles.backGroundColor}>
-            <Header Nav="Profile" />
+        <Animated.View style={[styles.backGroundColor, backGroundColorHeader]}>
+            <SafeAreaView style={styles.backGroundContent}>
+                <Header Nav="Profile" />
+                <ScrollView
+                    contentInsetAdjustmentBehavior="automatic"
+                    showsVerticalScrollIndicator={false}
+                    ref={scrollViewRef}
 
-            <SafeAreaView>
-
-                <View style={styles.upperHeader} />
-            </SafeAreaView>
-            <SafeAreaView style={[styles.containerProfil, { transform: [{ translateY: 0 }] }]}>
-                <View style={styles.container}>
-                    <Image source={require('../../assets/images/icon/search.png')} style={{ opacity: 0 }} />
-                    <Text style={styles.heading}>Profil</Text>
-                    <Image source={require('../../assets/images/icon/moreX.png')} />
-                </View>
-                <Animated.View style={[styles.wrapInfo, featureIconAnimation, { transform: [{ translateY: 0 }] }]}>
-                    <Animated.Image source={require('../../assets/images/avatar/avatar.jpg')} style={[styles.avatar, featureIconAnimation]} />
-                    <Animated.Text style={[styles.infoHeading, featureIconAnimation]}>Pham Minh Quang</Animated.Text>
-                    <Animated.Text style={[styles.infoEmail, featureIconAnimation]}>Email@gmail.com</Animated.Text>
-                    <Animated.View style={[styles.infoSocial, featureIconAnimation]}>
-                        <View style={styles.infoSocialWrap}>
-                            <Text style={styles.infoSocialHeading}>Followers</Text>
-                            <Text style={styles.infoSocialContent}>129</Text>
+                    onScroll={e => {
+                        const offsetY = e.nativeEvent.contentOffset.y;
+                        scrollDirection.current =
+                            offsetY - lastOffsetY.current > 0 ? 'down' : 'up';
+                        lastOffsetY.current = offsetY;
+                        animatedValue.setValue(offsetY);
+                    }}
+                    onScrollEndDrag={() => {
+                        scrollViewRef.current?.scrollTo({
+                            y: scrollDirection.current === 'down' ? 270 : 0,
+                            animated: true,
+                        });
+                    }}
+                    scrollEventThrottle={16}
+                >
+                    <View style={{ backgroundColor: '#000' }}>
+                        <Animated.View style={[styles.containerProfil, featureWrapAnimation,]}>
+                            <Animated.View style={[styles.wrapInfo, featureIconAnimation]}>
+                                <Animated.Image source={require('../../assets/images/avatar/avatar.jpg')} style={[styles.avatar, featureIconAnimation]} />
+                                <Animated.Text style={[styles.infoHeading, featureIconAnimation]}>Pham Minh Quang</Animated.Text>
+                                <Animated.Text style={[styles.infoEmail, featureIconAnimation]}>Email@gmail.com</Animated.Text>
+                                <Animated.View style={[styles.infoSocial, featureIconAnimation]}>
+                                    <View style={styles.infoSocialWrap}>
+                                        <Text style={styles.infoSocialHeading}>Followers</Text>
+                                        <Text style={styles.infoSocialContent}>129</Text>
+                                    </View>
+                                    <View style={styles.infoSocialWrap}>
+                                        <Text style={styles.infoSocialHeading}>Following</Text>
+                                        <Text style={styles.infoSocialContent}>1299</Text>
+                                    </View>
+                                </Animated.View>
+                            </Animated.View>
+                        </Animated.View>
+                        <View style={styles.content}>
+                            <Animated.Text >Hello</Animated.Text>
                         </View>
-                        <View style={styles.infoSocialWrap}>
-                            <Text style={styles.infoSocialHeading}>Following</Text>
-                            <Text style={styles.infoSocialContent}>1299</Text>
-                        </View>
-                    </Animated.View>
-                </Animated.View>
+                    </View>
+
+                </ScrollView>
+
+                {/* Footer */}
+                <Footer />
             </SafeAreaView>
-            <ScrollView
-                contentInsetAdjustmentBehavior="automatic"
-                showsVerticalScrollIndicator={false}
-                onScroll={e => {
-                    const offsetY = e.nativeEvent.contentOffset.y
-                    animatedValue.setValue(offsetY)
-                }}
-                scrollEventThrottle={16}
-            >
-
-                <View style={styles.spaceForHeader} />
-                <View style={styles.content}>
-                    <Animated.Text >Hello</Animated.Text>
-                </View>
-
-            </ScrollView>
-
-            {/* Footer */}
-            <Footer />
-        </View>
+        </Animated.View>
     )
 }
 
@@ -95,11 +124,11 @@ const styles = StyleSheet.create({
 
     },
     containerProfil: {
-        position: 'absolute',
         width: '100%',
         backgroundColor: '#333',
         borderEndEndRadius: 64,
         borderEndStartRadius: 64,
+        paddingBottom: 20
     },
 
     heading: {
@@ -115,7 +144,6 @@ const styles = StyleSheet.create({
         width: 96,
         height: 96,
         borderRadius: 96 / 2,
-        textAlign: 'center',
         marginTop: 24,
         marginBottom: 16
     },
@@ -152,8 +180,12 @@ const styles = StyleSheet.create({
         fontWeight: '600',
     },
     backGroundColor: {
-        backgroundColor: '#0f0e0e',
+        backgroundColor: '#333',
         flex: 1,
+    },
+    backGroundContent: {
+        flex: 1,
+
     },
     spaceForHeader: {
         height: 298,

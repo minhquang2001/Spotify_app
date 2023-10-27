@@ -50,7 +50,7 @@ const Header = (Navbar: any) => {
             {/* Render header when tab Profil */}
 
             {Nav === "Profile" && (
-                <View >
+                <>
                     {/* <SafeAreaView>
                         <View style={styles.upperHeader} />
                     </SafeAreaView>
@@ -77,8 +77,12 @@ const Header = (Navbar: any) => {
                         </View>
 
                     </SafeAreaView> */}
-        
-                </View>
+                    <View style={styles.container}>
+                        <Image source={require('../../../assets/images/icon/search.png')} style={{ opacity: 0 }} />
+                        <Text style={styles.heading}>Profil</Text>
+                        <Image source={require('../../../assets/images/icon/moreX.png')} />
+                    </View>
+                </>
             )}
 
         </>
@@ -94,7 +98,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         height: 60,
-        marginHorizontal: 32
+        marginHorizontal: 32,
     },
     containerProfil: {
         position: 'absolute',
@@ -117,7 +121,6 @@ const styles = StyleSheet.create({
         width: 96,
         height: 96,
         borderRadius: 96 / 2,
-        textAlign: 'center',
         marginTop: 24,
         marginBottom: 16
     },
