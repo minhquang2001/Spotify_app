@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, ScrollView, Animated, Image } from 'react-nativ
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+import Separate from '../components/Separate/Separate';
+import HistoryPlays from '../components/HistoryPlays/HistoryPlays';
 
 function Profil() {
     const scrollViewRef = useRef<ScrollView>(null);
@@ -96,7 +98,18 @@ function Profil() {
                             </Animated.View>
                         </Animated.View>
                         <View style={styles.content}>
-                            <Animated.Text >Hello</Animated.Text>
+                            <View style={styles.wrapIcon}>
+                                <View style={styles.wrapIconContent}>
+                                    <Image source={require('../../assets/images/icon/profile-add.png')} />
+                                    <Text style={styles.textIcon}>Find friend</Text>
+                                </View>
+                                <View style={styles.wrapIconContent}>
+                                    <Image source={require('../../assets/images/icon/directbox-send.png')} />
+                                    <Text style={styles.textIcon}>Share</Text>
+                                </View>
+                            </View>
+                            <Separate />
+                            <HistoryPlays />
                         </View>
                     </View>
 
@@ -193,7 +206,21 @@ const styles = StyleSheet.create({
     },
     content: {
         height: 1000,
-        backgroundColor: 'white'
+        backgroundColor: '#000'
+    },
+    wrapIcon: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginVertical: 24
+    },
+    wrapIconContent: {
+        alignItems: 'center'
+    },
+    textIcon: {
+        fontSize: 16,
+        color: '#fff',
+        fontWeight: '600',
+        marginTop: 8
     }
 })
 export default Profil
